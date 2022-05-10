@@ -8,6 +8,7 @@ import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
 import java.time.Duration;
+import java.util.concurrent.TimeoutException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -21,13 +22,12 @@ class BulkheadResourceTest {
 
     @Test
     void runConcurrent() {
-        StepVerifier.create(Flux.merge(runFibonacci(), runDoNothing())).verifyComplete();
+        StepVerifier.create(runFibonacci()).verifyComplete();
     }
 
     Mono<Void> runFibonacci() {
-        return Flux.range(1, 40)
+        return Flux.range(1, 40).log()
                 .flatMap(i -> this.webClient.get().uri("/api/bulkheads/calculate/50").retrieve().bodyToMono(Long.class))
-                .doOnNext(System.out::println)
                 .then();
     }
 

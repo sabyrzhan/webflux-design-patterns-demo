@@ -9,6 +9,9 @@ import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Scheduler;
 import reactor.core.scheduler.Schedulers;
 
+import java.time.Duration;
+import java.util.concurrent.TimeoutException;
+
 @RestController
 @RequestMapping("/api/bulkheads")
 public class BulkheadResource {
@@ -19,6 +22,8 @@ public class BulkheadResource {
     public Mono<ResponseEntity> fibonacci(@PathVariable int number) {
         return Mono.fromSupplier(() -> calculate(number))
                 .subscribeOn(FIBONACCI_SCHEDULER)
+                .timeout(Duration.ofSeconds(2))
+                .onErrorReturn(t -> t instanceof TimeoutException, -1L)
                 .map(ResponseEntity.ok()::body);
     }
 
