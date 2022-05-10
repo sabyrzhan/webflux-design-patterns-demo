@@ -1,4 +1,4 @@
-package kz.sabyrzhan.webfluxdesignpatternsdemo.resources;
+package kz.sabyrzhan.webfluxdesignpatternsdemo.controllers;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.web.reactive.function.client.WebClient;

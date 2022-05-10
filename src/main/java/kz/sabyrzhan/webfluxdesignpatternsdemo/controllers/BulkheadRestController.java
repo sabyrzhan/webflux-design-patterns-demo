@@ -1,4 +1,4 @@
-package kz.sabyrzhan.webfluxdesignpatternsdemo.resources;
+package kz.sabyrzhan.webfluxdesignpatternsdemo.controllers;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +14,7 @@ import java.util.concurrent.TimeoutException;
 
 @RestController
 @RequestMapping("/api/bulkheads")
-public class BulkheadResource {
+public class BulkheadRestController {
     private final Scheduler DO_NOTHING_SCHEDULER = Schedulers.newParallel("nothing-scheduler", 10);
     private final Scheduler FIBONACCI_SCHEDULER = Schedulers.newParallel("fib-scheduler", 10);
 

@@ -1,4 +1,4 @@
-package kz.sabyrzhan.webfluxdesignpatternsdemo.resources;
+package kz.sabyrzhan.webfluxdesignpatternsdemo.controllers;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +11,7 @@ import java.util.concurrent.TimeoutException;
 
 @RestController
 @RequestMapping("/api/timeouts")
-public class TimeoutResource {
+public class TimeoutRestController {
     @GetMapping("/timeout")
     public Mono<ResponseEntity<String>> timeout() {
         return Mono.delay(Duration.ofSeconds(10))

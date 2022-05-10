@@ -1,4 +1,4 @@
-package kz.sabyrzhan.webfluxdesignpatternsdemo.resources;
+package kz.sabyrzhan.webfluxdesignpatternsdemo.controllers;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.util.StopWatch;
@@ -7,8 +7,6 @@ import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
 import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class TimeoutResourceTest extends BaseTest {
     @Test

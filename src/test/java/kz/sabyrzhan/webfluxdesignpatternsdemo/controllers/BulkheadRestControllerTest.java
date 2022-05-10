@@ -1,18 +1,13 @@
-package kz.sabyrzhan.webfluxdesignpatternsdemo.resources;
+package kz.sabyrzhan.webfluxdesignpatternsdemo.controllers;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
 import java.time.Duration;
-import java.util.concurrent.TimeoutException;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class BulkheadResourceTest extends BaseTest {
+class BulkheadRestControllerTest extends BaseTest {
     @Test
     void runConcurrent() {
         StepVerifier.create(Flux.zip(runFibonacci(), runDoNothing()).parallel()).verifyComplete();
