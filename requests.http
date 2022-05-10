@@ -3,3 +3,6 @@ GET http://localhost:8080/api/bulkheads/calculate/50
 
 ### Bulkheads - calculate nothing
 GET http://localhost:8080/api/bulkheads/calculate/nothing
+
+### Timeouts - test timeout
+GET http://localhost:8080/api/timeouts/timeout

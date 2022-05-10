@@ -12,22 +12,16 @@ import java.util.concurrent.TimeoutException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BulkheadResourceTest {
-    WebClient webClient;
-
-    @BeforeEach
-    void setUp() {
-        webClient = WebClient.builder().baseUrl("http://localhost:8080").build();
-    }
-
+class BulkheadResourceTest extends BaseTest {
     @Test
     void runConcurrent() {
-        StepVerifier.create(runFibonacci()).verifyComplete();
+        StepVerifier.create(Flux.zip(runFibonacci(), runDoNothing()).parallel()).verifyComplete();
     }
 
     Mono<Void> runFibonacci() {
-        return Flux.range(1, 40).log()
+        return Flux.range(1, 40)
                 .flatMap(i -> this.webClient.get().uri("/api/bulkheads/calculate/50").retrieve().bodyToMono(Long.class))
+                .doOnNext(System.out::println)
                 .then();
     }
 
