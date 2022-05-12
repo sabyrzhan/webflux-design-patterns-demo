@@ -6,3 +6,6 @@ GET http://localhost:8080/api/bulkheads/calculate/nothing
 
 ### Timeouts - test timeout
 GET http://localhost:8080/api/timeouts/timeout
+
+### CircuitBreaker - calculate fibonacci
+GET http://localhost:8080/api/cbreaker

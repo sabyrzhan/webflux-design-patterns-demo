@@ -1,0 +1,5 @@
+resilience4j:
+  circuitbreaker:
+    instances:
+      cbreaker-service:
+        slidingWindowSize: 10
